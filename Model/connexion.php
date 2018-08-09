@@ -33,10 +33,9 @@ class Connexion extends PDO{
      */
     public static function getInstance(){
         if (self::$instance == NULL) {
-            $array = Spyc::YAMLLoad('../config/database.yml');
-            $db_name = $array['dsn']['db_name'];
-            $hote = $array['dsn']['hote'];
-            self::$instance = new Connexion($array['user'], $array['mdp'], $db_name, $hote);
+            $db_name = "GroupCorner";
+            $hote = "localhost";
+            self::$instance = new Connexion("root", "", $db_name, $hote);
         }
         return self::$instance;
     }

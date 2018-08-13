@@ -1,0 +1,16 @@
+.container {
+    margin: auto;
+    width: 800px;
+}
+label{
+    display:block;
+    float:left;
+    width:250px;
+}
+fieldset .text {
+    width: 450px;
+}
+h1 {
+    text-align: center;
+}
+

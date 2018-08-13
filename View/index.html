@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>recherche d'article</title>
+    <script src="../Public/js/jquery.js"></script>
+    <script src="../Public/js/ajax.js"></script>
+    <link rel="stylesheet" href="../Public/css/main.css">
+</head>
+<body class="container">
+<div class="appendto">
+
+    <h1>Moteur de recherche d'article</h1>
+    <form>
+    <fieldset>
+        <legend> Types de recherche disponible</legend>
+        <div class="title">
+            <label >Par titre:</label>
+            <input type="text" id="h1_title" name="title"
+                   class="text"
+                   placeholder="Rechercher un titre"/>
+            <span class="validity"></span>
+        </div>
+        <div class="keyword">
+            <label >Par mots clés:</label>
+            <input type="text" id="keyword" name="keyword"
+                   class="text"
+                   placeholder="Rechercher par mots clés"/>
+            <span class="validity"></span>
+        </div>
+        <div class="content">
+            <label >Par contenu:</label>
+            <input type="text" id="meta_description" name="content"
+                   class="text"
+                   placeholder="Rechercher dans le contenu des articles"/>
+            <span class="validity"></span>
+        </div>
+    </fieldset>
+    <fieldset>
+        <legend> Rechercher</legend>
+        <form>
+            <p>Recherche d'article(s): <input type="button" class="btn bouton_ajax" value="Click Me"/></p>
+        </form>
+    </fieldset>
+
+    </form>
+</div>
+</body>
+</html>

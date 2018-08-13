@@ -10,35 +10,46 @@ require_once("../Model/article.php");
 
 function searchArticle() {
     $get = "";
-    if(isset($_GET["title"]) && !empty($_GET["title"])) {
+    $err = array();
+    if (isset($_GET["title"]) && !empty($_GET["title"]) && $_GET["title"] != "") {
         $title = checked($_GET["title"]);
         if($title) {
-            $get = article::getArticles($title, "h1_title");
+            $get = article::getByTitle($title);
+        } else {
+            $err[] = "erreur sur le titre";
         }
 
-    }
-    if (isset($_GET["keyword"]) && !empty($_GET["keyword"])) {
+    } elseif (isset($_GET["keyword"]) && !empty($_GET["keyword"]) && $_GET["keyword"] != "") {
         $keyword = checked($_GET["keyword"]);
         if($keyword) {
-            $get = article::getArticles($keyword, "meta_keywords");
+            $get = article::getByKeyWord($keyword);
+        } else {
+            $err[] = "erreur sur les mots clés";
         }
-    }
-    if (isset($_GET["content"]) && !empty($_GET["content"])) {
+    } elseif (isset($_GET["content"]) && !empty($_GET["content"]) && $_GET["content"] != "") {
         $content = checked($_GET["content"]);
         if($content) {
-            $get = article::getArticles($content, "content");
+            $get = article::getByContent($content);
+        } else {
+            $err[] = "erreur sur les content";
         }
     }
-// mettre dans une vue la variable $get
-
+    if (sizeof($err)>0) {
+        return $err;
+    }
+    if($get == "") {
+        return "L'article demandé n'existe pas.";
+    }
+    return json_encode($get);
 
 }
 function checked($search) {
     $res = false;
-    // On enleve des caractères
-    $inj = preg_match('[{}#/^+=<>*-$/]', $search);
+
+    $inj = preg_match('/[{}#\/+=<>*$]/', $search);
     if($inj === 0) {
-        $res = implode("%", explode(" ", $search));
+        $res = "%".implode("%", explode(" ", $search))."%";
     }
     return $res;
 }
+echo searchArticle();

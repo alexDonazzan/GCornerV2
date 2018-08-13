@@ -43,9 +43,9 @@ console.log(code_json);
 $(".appendto").append(code_json);
             },
             error : function(resultat, statut, erreur){
+                $(".ajax_added").remove();
                 $(".appendto").append(resultat);
-                //clean dom
-                $(".body").removeClass(".ajax_added");
+                
 console.log("error");
             }
 

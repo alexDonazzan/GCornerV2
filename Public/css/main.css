@@ -14,3 +14,35 @@ h1 {
     text-align: center;
 }
 
+@media screen and (max-width: 800px) {
+    .container {
+        display:block;
+        width: 450px;
+    }
+    label {
+        width: 150px;
+    }
+    fieldset .text{
+        width: 200px;
+    }
+    .rechercher {
+        display: none;
+    }
+}
+
+
+@media screen and (max-width: 400px) {
+    .container {
+        display:block;
+        width: 250px;
+    }
+    label {
+        width: 100px;
+    }
+    fieldset .text{
+        width: 150px;
+    }
+    .rechercher {
+        display: none;
+    }
+}
